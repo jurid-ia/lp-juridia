@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jurídia Voice — Transforme atendimentos em registro jurídico organizado</title>
+<meta name="description" content="Grave atendimentos e reuniões com simplicidade. Receba a conversa estruturada, com identificação de falas, resumo e próximos passos. Crie sua conta grátis." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --c-bg: #0e0a05;
+    --c-bg-soft: #15100a;
+    --c-bg-card: #1c1610;
+    --c-bg-elev: #221a11;
+    --c-gold: #b09060;
+    --c-gold-light: #c9a57c;
+    --c-gold-deep: #8a7050;
+    --c-gold-soft: rgba(176, 144, 96, 0.12);
+    --c-gold-glow: rgba(201, 165, 124, 0.25);
+    --c-text: #ffffff;
+    --c-text-muted: #b8a890;
+    --c-text-soft: #8a7e6c;
+    --c-border: rgba(201, 165, 124, 0.18);
+    --c-border-strong: rgba(201, 165, 124, 0.34);
+    --c-danger: #e9b382;
+
+    --r-md: 14px;
+    --r-lg: 22px;
+    --r-pill: 999px;
+
+    --shadow-gold: 0 10px 40px -12px rgba(176, 144, 96, 0.35);
+    --shadow-card: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    background: var(--c-bg);
+    color: var(--c-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  ::selection { background: var(--c-gold); color: var(--c-bg); }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--c-gold-light);
+    padding: 6px 14px; border: 1px solid var(--c-border);
+    border-radius: var(--r-pill); background: var(--c-gold-soft);
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--c-gold); box-shadow: 0 0 10px var(--c-gold);
+  }
+
+  h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.15; }
+  h1 { font-size: clamp(36px, 5.5vw, 64px); font-weight: 700; }
+  h2 { font-size: clamp(28px, 3.8vw, 44px); font-weight: 700; }
+  h3 { font-size: clamp(20px, 2vw, 24px); font-weight: 600; }
+  .muted { color: var(--c-text-muted); }
+  .soft { color: var(--c-text-soft); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 15px 28px; border-radius: var(--r-pill);
+    font-weight: 600; font-size: 15px; letter-spacing: 0.01em;
+    transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease, border 200ms ease;
+    border: 1px solid transparent; white-space: nowrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--c-gold-light), var(--c-gold-deep));
+    color: #1b130a; box-shadow: var(--shadow-gold);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 44px -10px rgba(201, 165, 124, 0.5); }
+  .btn-ghost { border: 1px solid var(--c-border-strong); color: var(--c-text); }
+  .btn-ghost:hover { background: var(--c-gold-soft); border-color: var(--c-gold); }
+  .btn-block { width: 100%; }
+
+  /* ============ NAVBAR ============ */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(14, 10, 5, 0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--c-border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand img { height: 30px; width: auto; }
+  .brand-sub { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-gold-light); padding: 4px 10px; border: 1px solid var(--c-border); border-radius: var(--r-pill); }
+  .nav .btn { padding: 11px 20px; font-size: 14px; }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative; padding: 80px 0 60px; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(600px 300px at 15% 10%, rgba(201, 165, 124, 0.14), transparent 60%),
+                radial-gradient(500px 350px at 85% 90%, rgba(176, 144, 96, 0.10), transparent 65%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative;
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center;
+  }
+  .hero h1 strong { color: var(--c-gold-light); font-weight: 700; }
+  .hero p.lead { margin-top: 24px; font-size: clamp(16px, 1.4vw, 19px); color: var(--c-text-muted); max-width: 560px; }
+
+  .hero-badges { display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--c-text-muted); }
+  .hero-badge svg { width: 16px; height: 16px; color: var(--c-gold); }
+
+  /* ============ FORM CARD ============ */
+  .form-card {
+    position: relative;
+    background: linear-gradient(180deg, var(--c-bg-card), var(--c-bg-soft));
+    border: 1px solid var(--c-border-strong);
+    border-radius: var(--r-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-card);
+  }
+  .form-card::before {
+    content: ""; position: absolute; inset: -1px; border-radius: var(--r-lg);
+    background: linear-gradient(135deg, rgba(201, 165, 124, 0.4), transparent 40%, transparent 60%, rgba(201, 165, 124, 0.15));
+    z-index: -1; filter: blur(12px); opacity: 0.5;
+  }
+  .form-card h3 { font-size: 22px; }
+  .form-card .small { font-size: 13px; color: var(--c-text-soft); margin-top: 4px; }
+  .form-field { margin-top: 18px; }
+  .form-field label {
+    display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--c-text-muted); margin-bottom: 8px;
+  }
+  .form-field input {
+    width: 100%; padding: 14px 16px; font-size: 15px;
+    background: var(--c-bg); border: 1px solid var(--c-border);
+    border-radius: var(--r-md); color: var(--c-text);
+    font-family: inherit; outline: none; transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+  .form-field input::placeholder { color: var(--c-text-soft); }
+  .form-field input:focus { border-color: var(--c-gold); box-shadow: 0 0 0 3px var(--c-gold-glow); }
+  .form-card .btn { margin-top: 22px; }
+  .form-footnote {
+    display: flex; gap: 8px; align-items: flex-start;
+    margin-top: 18px; font-size: 12px; color: var(--c-text-soft); line-height: 1.55;
+  }
+  .form-footnote svg { width: 14px; height: 14px; color: var(--c-gold); flex-shrink: 0; margin-top: 2px; }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 90px 0; }
+  .section-head { max-width: 720px; margin: 0 auto 56px; text-align: center; }
+  .section-head .eyebrow { margin-bottom: 20px; }
+  .section-head p { margin-top: 16px; color: var(--c-text-muted); font-size: 17px; }
+
+  /* ============ DOR ============ */
+  .pain-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  }
+  .pain-card {
+    padding: 26px; border: 1px solid var(--c-border); border-radius: var(--r-md);
+    background: var(--c-bg-soft);
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .pain-card:hover { border-color: var(--c-border-strong); transform: translateY(-2px); }
+  .pain-card .icon {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: var(--c-gold-soft); color: var(--c-gold-light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .pain-card h3 { font-size: 16px; margin-bottom: 8px; }
+  .pain-card p { font-size: 14px; color: var(--c-text-muted); }
+
+  /* ============ VIDEO SHOWCASE ============ */
+  .video-frame {
+    position: relative;
+    border-radius: var(--r-lg); overflow: hidden;
+    border: 1px solid var(--c-border-strong);
+    background: linear-gradient(160deg, var(--c-bg-elev), var(--c-bg-soft));
+    aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-card);
+  }
+  .video-frame::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(201, 165, 124, 0.18), transparent 60%);
+  }
+  .video-placeholder {
+    position: relative; text-align: center; z-index: 1; padding: 40px;
+  }
+  .video-play {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--c-gold-light), var(--c-gold-deep));
+    display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: 0 20px 60px -10px rgba(201, 165, 124, 0.5);
+    margin-bottom: 20px;
+  }
+  .video-play svg { width: 32px; height: 32px; color: #1b130a; margin-left: 4px; }
+  .video-placeholder .tag {
+    display: inline-block; font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--c-gold-light);
+    padding: 5px 12px; border: 1px dashed var(--c-border-strong);
+    border-radius: var(--r-pill); margin-bottom: 14px;
+  }
+  .video-placeholder h3 { color: var(--c-text); margin-bottom: 6px; }
+  .video-placeholder p { color: var(--c-text-soft); font-size: 13px; max-width: 380px; margin: 0 auto; }
+
+  /* ============ HOW IT WORKS ============ */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .step {
+    position: relative; padding: 28px 22px;
+    border: 1px solid var(--c-border); border-radius: var(--r-md);
+    background: var(--c-bg-soft);
+  }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--c-gold-soft); color: var(--c-gold-light);
+    font-weight: 700; font-size: 15px; border: 1px solid var(--c-border-strong);
+    margin-bottom: 16px;
+  }
+  .step h3 { font-size: 17px; margin-bottom: 6px; }
+  .step p { font-size: 14px; color: var(--c-text-muted); }
+
+  /* ============ ENTREGA ============ */
+  .delivers {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .deliver-list { display: flex; flex-direction: column; gap: 14px; }
+  .deliver-item {
+    display: flex; gap: 16px; padding: 18px;
+    border: 1px solid var(--c-border); border-radius: var(--r-md);
+    background: var(--c-bg-soft);
+  }
+  .deliver-item .check {
+    flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px;
+    background: var(--c-gold-soft); color: var(--c-gold-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .deliver-item h3 { font-size: 15px; margin-bottom: 4px; }
+  .deliver-item p { font-size: 13.5px; color: var(--c-text-muted); line-height: 1.5; }
+
+  /* ============ CASOS DE USO ============ */
+  .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .case {
+    padding: 28px; border: 1px solid var(--c-border); border-radius: var(--r-md);
+    background: var(--c-bg-soft); transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .case:hover { border-color: var(--c-border-strong); transform: translateY(-2px); }
+  .case .tag { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-gold-light); margin-bottom: 12px; display: block; }
+  .case h3 { font-size: 17px; margin-bottom: 8px; }
+  .case p { font-size: 14px; color: var(--c-text-muted); }
+
+  /* ============ SEGURANÇA ============ */
+  .security {
+    padding: 48px; border: 1px solid var(--c-border-strong); border-radius: var(--r-lg);
+    background: linear-gradient(160deg, var(--c-bg-card), var(--c-bg-soft));
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .security ul { list-style: none; display: grid; gap: 14px; margin-top: 24px; }
+  .security li { display: flex; gap: 12px; align-items: flex-start; color: var(--c-text-muted); font-size: 15px; }
+  .security li svg { width: 20px; height: 20px; color: var(--c-gold-light); flex-shrink: 0; margin-top: 2px; }
+
+  /* ============ FAQ ============ */
+  .faq { max-width: 820px; margin: 0 auto; }
+  .faq-item { border: 1px solid var(--c-border); border-radius: var(--r-md); margin-bottom: 12px; background: var(--c-bg-soft); overflow: hidden; }
+  .faq-item summary {
+    padding: 20px 24px; font-weight: 600; font-size: 16px;
+    cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+"; font-size: 22px; font-weight: 400; color: var(--c-gold-light);
+    transition: transform 200ms ease;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item .faq-body { padding: 0 24px 22px; color: var(--c-text-muted); font-size: 15px; line-height: 1.65; }
+
+  /* ============ CTA FINAL ============ */
+  .cta-final {
+    text-align: center;
+    padding: 72px 48px;
+    border: 1px solid var(--c-border-strong); border-radius: var(--r-lg);
+    background: radial-gradient(800px 400px at 50% 0%, rgba(201, 165, 124, 0.14), transparent 60%), var(--c-bg-card);
+  }
+  .cta-final h2 { max-width: 720px; margin: 0 auto 16px; }
+  .cta-final p { color: var(--c-text-muted); max-width: 560px; margin: 0 auto 32px; font-size: 17px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 48px 0 32px;
+    border-top: 1px solid var(--c-border);
+    margin-top: 40px;
+  }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  footer .brand img { height: 26px; }
+  footer p { font-size: 13px; color: var(--c-text-soft); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .pain-grid, .steps, .cases { grid-template-columns: 1fr 1fr; }
+    .delivers, .security { grid-template-columns: 1fr; gap: 32px; }
+    section { padding: 64px 0; }
+    .hero { padding: 48px 0; }
+    .cta-final { padding: 48px 24px; }
+    .security { padding: 32px; }
+  }
+  @media (max-width: 560px) {
+    .pain-grid, .steps, .cases { grid-template-columns: 1fr; }
+    .nav-inner { padding: 14px 20px; }
+    .brand-sub { display: none; }
+    .form-card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="assets/logo-white.png" alt="Jurídia" />
+      <span class="brand-sub">Voice</span>
+    </a>
+    <a href="#criar-conta" class="btn btn-primary">Criar conta grátis</a>
+  </div>
+</header>
+
+<!-- ============ HERO + FORM ============ -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Jurídia Voice · Beta fechado</span>
+      <h1 style="margin-top: 20px;">
+        Transforme atendimentos e reuniões em <strong>registro jurídico organizado</strong>.
+      </h1>
+      <p class="lead">
+        Grave a conversa com um clique. Receba transcrição com identificação de falas, resumo executivo
+        e próximos passos do caso — prontos para voltar ao processo com clareza.
+      </p>
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Identifica quem falou o quê
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Resumo e desdobramentos
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Dados criptografados
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO PRINCIPAL -->
+    <form class="form-card" id="criar-conta" onsubmit="return handleSubmit(event)">
+      <h3>Crie sua conta em 30 segundos</h3>
+      <p class="small">Teste o Jurídia Voice grátis. Sem cartão de crédito.</p>
+
+      <div class="form-field">
+        <label for="f-nome">Nome completo</label>
+        <input id="f-nome" name="nome" type="text" required placeholder="Ex.: Ana Martins" autocomplete="name" />
+      </div>
+      <div class="form-field">
+        <label for="f-email">E-mail profissional</label>
+        <input id="f-email" name="email" type="email" required placeholder="ana@seuescritorio.com.br" autocomplete="email" />
+      </div>
+      <div class="form-field">
+        <label for="f-telefone">Telefone (WhatsApp)</label>
+        <input id="f-telefone" name="telefone" type="tel" required placeholder="(11) 91234-5678" autocomplete="tel" />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">
+        Continuar — definir minha senha
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+
+      <div class="form-footnote">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span>Seus dados seguem nossa <a href="#" style="color: var(--c-gold-light); text-decoration: underline;">Política de Privacidade</a>. Usamos só para criar sua conta e falar de produto.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ DOR ============ -->
+<section id="dor">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span> A dor silenciosa do jurídico</span>
+      <h2>Você já saiu de uma reunião e sentiu que perdeu algo importante?</h2>
+      <p>Conversa jurídica tem densidade. Detalhe some. Contexto se dispersa entre anotações, áudios e memória. Reconstruir depois custa horas — e confiança.</p>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Horas reconstruindo</h3>
+        <p>Anotar durante o atendimento divide a atenção. Depois, tentar lembrar o que foi dito toma tempo que você não tem.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Detalhe que importa</h3>
+        <p>Um prazo citado, um nome, um valor. No jurídico, a nuance define o caso. Perder isso é caro.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17l-5-5 5-5M20 12H4"/></svg>
+        </div>
+        <h3>Contexto espalhado</h3>
+        <p>Áudio no WhatsApp, e-mail, caderno, CRM. Cada atendimento vira uma caçada pelo próprio trabalho.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+        </div>
+        <h3>Equipe sem memória</h3>
+        <p>Sócio passa o caso pro associado. Sem registro estruturado, a conversa importante vive só na cabeça de uma pessoa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMONSTRAÇÃO (VÍDEO) ============ -->
+<section id="demo" style="background: linear-gradient(180deg, transparent, var(--c-bg-soft) 30%, transparent);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span> Demonstração</span>
+      <h2>Veja um atendimento real virando registro organizado.</h2>
+      <p>Gravação iniciada em um clique. Resultado estruturado na tela, pronto para consultar e compartilhar.</p>
+    </div>
+
+    <!-- [VÍDEO-REAL-VOCÊ]
+         Sugestão: 45s–70s. Tela dividida. Lado esquerdo: mão abrindo o app e apertando gravar
+         (enquadramento de mesa real, pasta do escritório ao fundo). Lado direito: time-lapse do
+         resultado aparecendo — transcrição com falas, resumo, próximos passos.
+         Voz: você narrando em tom calmo, 3 frases curtas. -->
+    <div class="video-frame">
+      <div class="video-placeholder">
+        <span class="tag">[VÍDEO-PLACEHOLDER · principal]</span>
+        <div class="video-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <h3>Demo oficial do Voice</h3>
+        <p>Ideal: gravação real de um atendimento (áudio/tela) mostrando clique no gravar → resultado estruturado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO FUNCIONA ============ -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span> Como funciona</span>
+      <h2>Quatro passos. Sem fricção. Sem curva de aprendizado.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Inicie a gravação</h3>
+        <p>Um clique. Pelo celular ou no computador. Atendimento presencial ou reunião online.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Conduza normalmente</h3>
+        <p>Esqueça a anotação. Foque no cliente, no caso, na estratégia. O Voice escuta em segundo plano.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Receba o registro estruturado</h3>
+        <p>Transcrição com identificação de falas, resumo dos pontos-chave, prazos e próximos passos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Volte ao caso com clareza</h3>
+        <p>Tudo consultável. Pesquisável. Compartilhável com sua equipe. Sem depender só da memória.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O QUE ENTREGA ============ -->
+<section id="entrega" style="background: linear-gradient(180deg, transparent, var(--c-bg-soft) 30%, transparent);">
+  <div class="container">
+    <div class="delivers">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> O que você recebe</span>
+        <h2 style="margin-top: 16px;">Depois da conversa, a informação volta organizada.</h2>
+        <p class="muted" style="margin-top: 18px; font-size: 16px;">
+          Não é só um áudio transcrito. É um registro jurídico pronto para leitura, consulta e continuidade do caso.
+        </p>
+
+        <!-- [VÍDEO-PLACEHOLDER · mini]
+             Sugestão: loop curto (8–12s) sem áudio mostrando o painel do resultado
+             com o cursor percorrendo: fala do cliente → resumo → próximos passos. -->
+        <div class="video-frame" style="aspect-ratio: 4/3; margin-top: 28px;">
+          <div class="video-placeholder">
+            <span class="tag">[VÍDEO-PLACEHOLDER · resultado]</span>
+            <div class="video-play" style="width: 64px; height: 64px;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <p>Print/loop do painel de resultado real</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="deliver-list">
+        <div class="deliver-item">
+          <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div>
+            <h3>Identificação de falas</h3>
+            <p>Quem disse o quê, com marcação de tempo. Advogado, cliente, terceiros — cada voz no seu lugar.</p>
+          </div>
+        </div>
+        <div class="deliver-item">
+          <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div>
+            <h3>Transcrição organizada</h3>
+            <p>Texto limpo, com pontuação e estrutura. Não é dump de áudio — é documento lido por humano.</p>
+          </div>
+        </div>
+        <div class="deliver-item">
+          <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div>
+            <h3>Resumo executivo</h3>
+            <p>Os pontos que importam para o caso em parágrafos curtos. Direto ao essencial.</p>
+          </div>
+        </div>
+        <div class="deliver-item">
+          <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div>
+            <h3>Próximos passos</h3>
+            <p>Prazos citados, tarefas acordadas, desdobramentos. Lista clara do que fazer depois.</p>
+          </div>
+        </div>
+        <div class="deliver-item">
+          <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div>
+            <h3>Visão contextual</h3>
+            <p>Continuidade entre atendimentos do mesmo caso. Memória que sobrevive ao tempo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASOS DE USO ============ -->
+<section id="casos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span> Casos de uso jurídicos</span>
+      <h2>Pensado para os momentos da sua prática.</h2>
+    </div>
+
+    <div class="cases">
+      <div class="case">
+        <span class="tag">Cliente</span>
+        <h3>Atendimento inicial</h3>
+        <p>A primeira conversa com o cliente define o caso. Registre sem distração e volte ao que ele disse quando precisar.</p>
+      </div>
+      <div class="case">
+        <span class="tag">Caso</span>
+        <h3>Reunião de alinhamento</h3>
+        <p>Estratégia discutida em equipe vira registro consultável. Quem decidiu o quê, com qual fundamento.</p>
+      </div>
+      <div class="case">
+        <span class="tag">Equipe</span>
+        <h3>Conversa estratégica</h3>
+        <p>Discussões internas densas ganham um resumo com os pontos que realmente importam para seguir adiante.</p>
+      </div>
+      <div class="case">
+        <span class="tag">Consultoria</span>
+        <h3>Reunião consultiva</h3>
+        <p>Cliente empresarial expõe contexto. Você entrega parecer. O registro preserva tudo para a próxima etapa.</p>
+      </div>
+      <div class="case">
+        <span class="tag">Histórico</span>
+        <h3>Tratativas longas</h3>
+        <p>Casos que se arrastam por meses mantêm continuidade. Retome onde parou — inclusive meses depois.</p>
+      </div>
+      <div class="case">
+        <span class="tag">Campo</span>
+        <h3>Audiências e visitas</h3>
+        <p>Fora do escritório, grave pelo celular. Chegue em casa com a reunião já virada em documento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEGURANÇA E DIFERENCIAIS ============ -->
+<section id="seguranca" style="background: linear-gradient(180deg, transparent, var(--c-bg-soft) 30%, transparent);">
+  <div class="container">
+    <div class="security">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Diferenciais · Segurança</span>
+        <h2 style="margin-top: 16px;">Seriedade que o jurídico exige.</h2>
+        <p class="muted" style="margin-top: 18px; font-size: 16px;">
+          Voice não é uma ferramenta genérica adaptada pro direito. Foi construído pensando no nível
+          de discrição, organização e confiança que um advogado precisa ter com seus dados.
+        </p>
+      </div>
+      <ul>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <span><strong>Criptografia em trânsito e repouso.</strong> Seus áudios e transcrições são protegidos por criptografia padrão bancário.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L3 7v6c0 5 3.5 8.5 9 11 5.5-2.5 9-6 9-11V7l-9-5z"/></svg>
+          <span><strong>Infraestrutura dedicada.</strong> Servidores segregados. Seus dados não treinam modelos de terceiros.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span><strong>Conformidade LGPD.</strong> Política clara, direito ao esquecimento, exportação completa dos seus registros.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><strong>Método, não volume.</strong> Não geramos mais informação — organizamos a que importa.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span> Perguntas frequentes</span>
+      <h2>Tire as dúvidas que costumam aparecer antes do teste.</h2>
+    </div>
+
+    <div class="faq">
+      <details class="faq-item" open>
+        <summary>Como eu gravo uma reunião ou atendimento?</summary>
+        <div class="faq-body">Abra o Voice no celular ou computador, aperte <strong>gravar</strong> e conduza o atendimento normalmente. Funciona para conversa presencial ou online.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Funciona para audiência, reunião online e conversa presencial?</summary>
+        <div class="faq-body">Sim. Presencial com o microfone do dispositivo, online capturando o áudio do sistema. Em ambos o resultado sai estruturado.</div>
+      </details>
+      <details class="faq-item">
+        <summary>O que exatamente eu recebo depois da gravação?</summary>
+        <div class="faq-body">Transcrição com identificação de falas, resumo executivo, prazos e próximos passos, além da visão contextual do caso.</div>
+      </details>
+      <details class="faq-item">
+        <summary>O Voice mostra quem falou o quê?</summary>
+        <div class="faq-body">Sim. Cada bloco de fala é atribuído a um interlocutor, com marcação de tempo para auditoria posterior.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Posso usar no celular?</summary>
+        <div class="faq-body">Sim. O Voice roda no navegador do celular e no desktop. Sem instalação obrigatória.</div>
+      </details>
+      <details class="faq-item">
+        <summary>É seguro? Meus dados são privados?</summary>
+        <div class="faq-body">Sim. Criptografia em trânsito e repouso, infraestrutura segregada, conformidade com a LGPD. Seus dados não alimentam modelos externos.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Existe plano gratuito?</summary>
+        <div class="faq-body">Sim. Você começa grátis, sem cartão. Os planos pagos abrem depois que você entender o valor na prática.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section id="cta-final">
+  <div class="container">
+    <div class="cta-final">
+      <span class="eyebrow"><span class="dot"></span> Comece agora</span>
+      <h2 style="margin-top: 20px;">Seu próximo atendimento já pode virar registro organizado.</h2>
+      <p>Crie sua conta grátis, grave a primeira reunião hoje e veja a conversa voltar estruturada.</p>
+      <a href="#criar-conta" class="btn btn-primary">
+        Criar minha conta
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <a href="#top" class="brand">
+      <img src="assets/logo-white.png" alt="Jurídia" />
+    </a>
+    <p>© 2026 Jurídia · Voice. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+      nome: form.nome.value.trim(),
+      email: form.email.value.trim(),
+      telefone: form.telefone.value.trim(),
+    };
+    try { sessionStorage.setItem('juridia_voice_lead', JSON.stringify(data)); } catch (_) {}
+    // MVP: redireciona para /register onde só falta a senha.
+    // Query string permite a rota /register hidratar nome/email/telefone.
+    const params = new URLSearchParams(data).toString();
+    window.location.href = '/register?' + params;
+    return false;
+  }
+
+  // Máscara simples para telefone BR
+  document.getElementById('f-telefone').addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 6)      v = v.replace(/(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+    else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5}).*/, '($1) $2');
+    else if (v.length > 0) v = v.replace(/(\d{0,2}).*/, '($1');
+    e.target.value = v;
+  });
+</script>
+
+</body>
+</html>

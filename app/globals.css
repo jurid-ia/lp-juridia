@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg font-sans text-text antialiased;
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: theme("colors.gold.DEFAULT");
+    color: theme("colors.bg.DEFAULT");
+  }
+
+  /* foco visível consistente para a11y */
+  :focus-visible {
+    outline: 2px solid theme("colors.gold.light");
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(28, 22, 16, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid theme("colors.line.DEFAULT");
+  }
+
+  .gradient-gold-text {
+    background: linear-gradient(
+      135deg,
+      theme("colors.gold.light"),
+      theme("colors.gold.DEFAULT"),
+      theme("colors.gold.deep")
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(600px 300px at 15% 10%, rgba(201, 165, 124, 0.14), transparent 60%),
+      radial-gradient(500px 350px at 85% 90%, rgba(176, 144, 96, 0.1), transparent 65%);
+    pointer-events: none;
+  }
+}
