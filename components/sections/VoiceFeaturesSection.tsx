@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
+  ArrowRight,
   ArrowRightCircle,
   FileText,
   ListChecks,
@@ -12,6 +13,8 @@ import {
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Button } from "@/components/ui/Button";
+import { PhotoSlot } from "@/components/ui/PhotoSlot";
 
 const FEATURES = [
   {
@@ -51,7 +54,7 @@ export function VoiceFeaturesSection() {
     <Section id="entrega">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow>O que você recebe depois</Eyebrow>
+          <Eyebrow size="sm">O que você recebe depois</Eyebrow>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-text md:text-4xl">
             A conversa volta organizada — e pronta para virar trabalho.
           </h2>
@@ -78,6 +81,22 @@ export function VoiceFeaturesSection() {
               <p className="mt-2 text-sm leading-relaxed text-text-muted">{feature.body}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* Faixa de fotos do produto + CTA */}
+        <div className="mt-14 grid gap-4 md:grid-cols-4">
+          <PhotoSlot src="/images/showcase/19.png" alt="" aspect="3/4" />
+          <PhotoSlot src="/images/showcase/24.png" alt="" aspect="3/4" />
+          <PhotoSlot src="/images/showcase/30.png" alt="" aspect="3/4" />
+          <PhotoSlot src="/images/showcase/34.png" alt="" aspect="3/4" />
+        </div>
+
+        <div className="mt-10 flex flex-col items-center gap-3 text-center">
+          <Button as="a" href="#cadastro" size="lg">
+            Quero ver isso na minha rotina
+            <ArrowRight size={18} aria-hidden />
+          </Button>
+          <p className="text-sm text-text-soft">Crie sua conta grátis em 30 segundos.</p>
         </div>
       </Container>
     </Section>

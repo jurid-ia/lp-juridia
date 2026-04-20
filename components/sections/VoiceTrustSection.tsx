@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cloud, EyeOff, KeyRound, ShieldCheck } from "lucide-react";
+import { ArrowRight, Cloud, EyeOff, KeyRound, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Button } from "@/components/ui/Button";
+import { PhotoSlot } from "@/components/ui/PhotoSlot";
 
 const PILLARS = [
   {
@@ -34,12 +36,12 @@ export function VoiceTrustSection() {
     <Section id="seguranca">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow>Diferenciais & segurança</Eyebrow>
+          <Eyebrow size="sm">Diferenciais & segurança</Eyebrow>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-text md:text-4xl">
             Sobriedade onde importa: precisão, confiança e discrição.
           </h2>
           <p className="mt-4 text-text-muted">
-            O jurídico exige seriedade. O Jurídia Voice foi construído para responder a esse patamar
+            O jurídico exige seriedade. O Jurid IA Voice foi construído para responder a esse patamar
             desde o primeiro toque na tela.
           </p>
         </div>
@@ -61,6 +63,20 @@ export function VoiceTrustSection() {
               <p className="mt-2 text-sm leading-relaxed text-text-muted">{pillar.body}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* Slots de foto em par — certificações, sala segura, infra, etc. */}
+        <div className="mt-14 grid gap-4 sm:grid-cols-2">
+          <PhotoSlot src="/images/showcase/20.png" alt="" aspect="16/9" />
+          <PhotoSlot src="/images/showcase/26.png" alt="" aspect="16/9" />
+        </div>
+
+        <div className="mt-10 flex flex-col items-center gap-3 text-center">
+          <Button as="a" href="#cadastro" size="lg">
+            Começar com segurança
+            <ArrowRight size={18} aria-hidden />
+          </Button>
+          <p className="text-sm text-text-soft">Conta gratuita. LGPD desde o primeiro atendimento.</p>
         </div>
       </Container>
     </Section>

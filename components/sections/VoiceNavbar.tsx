@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { href: "#como-funciona", label: "Como funciona" },
   { href: "#entrega", label: "O que entrega" },
   { href: "#casos", label: "Casos de uso" },
-  { href: "#planos", label: "Planos" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -45,7 +44,7 @@ export function VoiceNavbar() {
       )}
     >
       <Container className="flex h-16 items-center justify-between md:h-20">
-        <a href="#topo" className="flex items-center gap-3" aria-label="Jurídia Voice — início">
+        <a href="#topo" className="flex items-center gap-3" aria-label="Jurid IA Voice — início">
           <Image
             src="/images/logo/logo-white.png"
             alt="Jurídia"

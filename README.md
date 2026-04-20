@@ -1,6 +1,6 @@
-# Jurídia Voice — Landing Page
+# Jurid IA Voice — Landing Page
 
-Landing page do **Jurídia Voice**, construída em **Next.js 14 (App Router) + TypeScript + Tailwind CSS**, mobile-first, com identidade visual escura/dourada herdada do institucional Jurídia.
+Landing page do **Jurid IA Voice**, construída em **Next.js 14 (App Router) + TypeScript + Tailwind CSS**, mobile-first, com identidade visual escura/dourada herdada do institucional Jurídia.
 
 Captura `nome + email + telefone` no hero e no CTA final, depois redireciona o usuário para `https://voice.juridia.com.br/register` para a etapa de senha (com os campos pré-preenchidos via query string).
 

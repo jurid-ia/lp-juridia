@@ -39,7 +39,7 @@ export function VoiceProblemSection() {
             Quanta conversa importante se perde entre o atendimento e a próxima ação?
           </h2>
           <p className="mt-4 text-text-muted">
-            O Jurídia Voice nasceu para responder uma pergunta antiga: por que o advogado ainda precisa
+            O Jurid IA Voice nasceu para responder uma pergunta antiga: por que o advogado ainda precisa
             reconstruir, à mão, aquilo que já foi dito?
           </p>
         </div>

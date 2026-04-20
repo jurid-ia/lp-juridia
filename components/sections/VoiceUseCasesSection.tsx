@@ -1,82 +1,102 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Briefcase,
-  Building2,
-  HeartHandshake,
-  History,
-  ScrollText,
-  Users2,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Button } from "@/components/ui/Button";
+import { PhotoSlot } from "@/components/ui/PhotoSlot";
 
 const CASES = [
-  {
-    icon: HeartHandshake,
-    title: "Atendimento inicial com cliente",
-    body: "Capture os fatos da primeira conversa sem precisar dividir atenção entre escutar e anotar.",
-  },
-  {
-    icon: ScrollText,
-    title: "Reunião de alinhamento de caso",
-    body: "Mantenha sócios, equipe e cliente na mesma versão dos fatos. Decisões registradas, contexto preservado.",
-  },
-  {
-    icon: Users2,
-    title: "Conversa estratégica com equipe",
-    body: "Nem toda decisão vira ata. O Voice transforma reuniões internas em material consultável depois.",
-  },
-  {
-    icon: Briefcase,
-    title: "Reunião consultiva",
-    body: "Recomendações e ressalvas registradas com clareza — proteção para você e para o cliente.",
-  },
-  {
-    icon: History,
-    title: "Histórico de tratativas",
-    body: "Reconstrua a linha do tempo de um caso sem garimpar e-mails, áudios soltos e prints de WhatsApp.",
-  },
-  {
-    icon: Building2,
-    title: "Jurídico interno",
-    body: "Padronize o registro de demandas vindas das áreas de negócio. Menos retrabalho, mais rastreabilidade.",
-  },
+  { title: "Atendimento inicial", body: "Capture os fatos sem dividir atenção." },
+  { title: "Alinhamento de caso", body: "Sócios e cliente na mesma versão." },
+  { title: "Conversa estratégica", body: "Reuniões internas viram material consultável." },
+  { title: "Reunião consultiva", body: "Recomendações e ressalvas registradas." },
+  { title: "Histórico de tratativas", body: "Linha do tempo reconstruída sem esforço." },
+  { title: "Jurídico interno", body: "Padronize o registro vindo das áreas." },
+];
+
+const PHOTOS = [
+  { src: "/images/showcase/21.png", alt: "" },
+  { src: "/images/showcase/25.png", alt: "" },
+  { src: "/images/showcase/29.png", alt: "" },
+  { src: "/images/showcase/33.png", alt: "" },
 ];
 
 export function VoiceUseCasesSection() {
   return (
     <Section id="casos" className="bg-bg-soft">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow>Casos de uso jurídicos</Eyebrow>
-          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-text md:text-4xl">
-            Pensado para a rotina real do advogado.
-          </h2>
-          <p className="mt-4 text-text-muted">
-            Reconheça seu cenário. Quando o produto encaixa na prática, a decisão fica simples.
-          </p>
-        </div>
+        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
+          {/* Coluna esquerda — texto editorial */}
+          <div className="flex flex-col">
+            <Eyebrow size="sm">Casos de uso</Eyebrow>
+            <h2 className="mt-5 font-display text-3xl font-light leading-[1.15] tracking-tight text-text md:text-[2.5rem]">
+              Pensado para a <em className="not-italic font-semibold text-gold-light">rotina real</em> do advogado.
+            </h2>
+            <p className="mt-5 max-w-md text-base text-text-muted">
+              Reconheça seu cenário. Quando o produto encaixa na prática, a decisão fica simples.
+            </p>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {CASES.map((useCase, idx) => (
-            <motion.article
-              key={useCase.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: idx * 0.04 }}
-              className="rounded-xl border border-line bg-bg-card p-6 transition-colors hover:border-line-strong"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gold-soft text-gold-light">
-                <useCase.icon size={20} aria-hidden />
+            <ol className="mt-12 flex flex-col">
+              {CASES.map((useCase, idx) => (
+                <motion.li
+                  key={useCase.title}
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.35, delay: idx * 0.04 }}
+                  className="grid grid-cols-[auto_auto_1fr] items-baseline gap-x-5 border-t border-line py-4 last:border-b"
+                >
+                  <span className="font-display text-sm font-medium tabular-nums text-gold-light">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="whitespace-nowrap font-display text-base font-medium text-text md:text-lg">
+                    {useCase.title}
+                  </h3>
+                  <p className="truncate text-sm text-text-muted">{useCase.body}</p>
+                </motion.li>
+              ))}
+            </ol>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Button as="a" href="#cadastro" size="md">
+                Comece grátis
+                <ArrowRight size={16} aria-hidden />
+              </Button>
+              <span className="text-sm text-text-soft">
+                Sem cartão. Em 30 segundos você está dentro.
+              </span>
+            </div>
+          </div>
+
+          {/* Coluna direita — colagem de fotos (4 slots) */}
+          <div className="relative hidden lg:block">
+            <div className="sticky top-28 grid h-[640px] grid-cols-2 grid-rows-3 gap-4">
+              <div className="col-span-1 row-span-2">
+                <PhotoSlot src={PHOTOS[0].src} alt={PHOTOS[0].alt} fillParent />
               </div>
-              <h3 className="mt-5 font-display text-lg font-semibold text-text">{useCase.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-muted">{useCase.body}</p>
-            </motion.article>
-          ))}
+              <div className="col-span-1 row-span-1">
+                <PhotoSlot src={PHOTOS[1].src} alt={PHOTOS[1].alt} fillParent />
+              </div>
+              <div className="col-span-1 row-span-1">
+                <PhotoSlot src={PHOTOS[2].src} alt={PHOTOS[2].alt} fillParent />
+              </div>
+              <div className="col-span-2 row-span-1">
+                <PhotoSlot src={PHOTOS[3].src} alt={PHOTOS[3].alt} fillParent />
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: tira horizontal de slots de foto */}
+          <div className="lg:hidden">
+            <div className="grid grid-cols-2 gap-3">
+              {PHOTOS.map((photo) => (
+                <PhotoSlot key={photo.src} src={photo.src} alt={photo.alt} aspect="4/5" />
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </Section>

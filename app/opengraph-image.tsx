@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Jurídia Voice — atendimentos jurídicos com contexto preservado";
+export const alt = "Jurid IA Voice — atendimentos jurídicos com contexto preservado";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,7 +49,7 @@ export default function OpengraphImage() {
               boxShadow: "0 0 16px #b09060",
             }}
           />
-          Jurídia Voice
+          Jurid IA Voice
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Karla } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,7 +18,7 @@ const karla = Karla({
 });
 
 const SITE_URL = "https://voice.juridia.com.br";
-const TITLE = "Jurídia Voice — Atendimentos jurídicos com contexto preservado";
+const TITLE = "Jurid IA Voice — Atendimentos jurídicos com contexto preservado";
 const DESCRIPTION =
   "Grave atendimentos e reuniões jurídicas com simplicidade. Receba a conversa estruturada — quem falou o quê, resumo e próximos passos — para retomar o caso com clareza.";
 
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
-  applicationName: "Jurídia Voice",
+  applicationName: "Jurid IA Voice",
   authors: [{ name: "Jurídia" }],
   keywords: [
     "Jurídia",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
-    siteName: "Jurídia Voice",
+    siteName: "Jurid IA Voice",
     title: TITLE,
     description: DESCRIPTION,
   },
@@ -61,7 +62,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${karla.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

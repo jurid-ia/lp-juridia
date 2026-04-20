@@ -28,7 +28,7 @@ export function VoiceHeroSection() {
             className="flex flex-col items-start gap-6"
           >
             <Eyebrow>
-              <Mic size={12} aria-hidden /> Jurídia Voice
+              <Mic size={12} aria-hidden /> Jurid IA Voice
             </Eyebrow>
 
             <h1 className="font-display text-[clamp(2.25rem,5.5vw,4rem)] font-bold leading-[1.05] -tracking-[0.02em] text-text">

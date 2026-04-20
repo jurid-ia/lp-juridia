@@ -1,8 +1,8 @@
-# Jurídia Voice — Tese Estratégica e Estrutura de Landing Page
+# Jurid IA Voice — Tese Estratégica e Estrutura de Landing Page
 
 ## 1. O que este documento é
 
-Este documento foi criado para orientar a construção da landing page do **Jurídia Voice** com foco em posicionamento, clareza comercial e sensibilidade ao contexto jurídico.
+Este documento foi criado para orientar a construção da landing page do **Jurid IA Voice** com foco em posicionamento, clareza comercial e sensibilidade ao contexto jurídico.
 
 Ele serve como base de produto e copy.
 
@@ -16,9 +16,9 @@ A missão aqui é mostrar como a LP deve:
 - reduzir objeções
 - conduzir a pessoa para teste ou contratação
 
-## 2. Qual é a missão da LP do Jurídia Voice
+## 2. Qual é a missão da LP do Jurid IA Voice
 
-A LP do Jurídia Voice deve mostrar que este produto ajuda o advogado a registrar melhor atendimentos, conversas e reuniões sem perder contexto.
+A LP do Jurid IA Voice deve mostrar que este produto ajuda o advogado a registrar melhor atendimentos, conversas e reuniões sem perder contexto.
 
 Ela precisa comunicar:
 
@@ -30,7 +30,7 @@ Ela precisa comunicar:
 
 No jurídico, a marca não deve soar espalhafatosa. Deve soar precisa.
 
-## 3. Quem é o usuário do Jurídia Voice em 2026 no Brasil
+## 3. Quem é o usuário do Jurid IA Voice em 2026 no Brasil
 
 O usuário jurídico tende a valorizar:
 
@@ -51,11 +51,11 @@ Perfis com maior aderência inicial:
 
 ## 4. Tese central do produto
 
-O **Jurídia Voice** não deve ser apresentado como ferramenta genérica de transcrição.
+O **Jurid IA Voice** não deve ser apresentado como ferramenta genérica de transcrição.
 
 A tese mais forte é:
 
-> O Jurídia Voice transforma atendimentos e reuniões jurídicas em registro estruturado, contexto organizado e continuidade de atuação.
+> O Jurid IA Voice transforma atendimentos e reuniões jurídicas em registro estruturado, contexto organizado e continuidade de atuação.
 
 Versões alternativas:
 
@@ -73,7 +73,7 @@ O advogado ou gestor jurídico precisa sentir:
 - **confiança** — parece seguro e profissional
 - **utilidade** — isso pode me ajudar amanhã, não só teoricamente
 
-## 6. Qual problema a copy do Jurídia Voice enfrenta
+## 6. Qual problema a copy do Jurid IA Voice enfrenta
 
 A copy precisa enfrentar resistências como:
 
@@ -95,7 +95,7 @@ No jurídico, o usuário tende a avaliar com atenção. Por isso a ordem deve re
 2. Dor de contexto e registro
 3. Demonstração simples de uso
 4. Como funciona
-5. O que o Jurídia Voice entrega
+5. O que o Jurid IA Voice entrega
 6. Casos de uso jurídicos
 7. Diferenciais e segurança
 8. Planos
@@ -176,7 +176,7 @@ Não tecnicizar demais.
 
 O jurídico valoriza método, mas não quer engenharia do produto. Quer utilidade prática.
 
-### 8.5 O que o Jurídia Voice entrega
+### 8.5 O que o Jurid IA Voice entrega
 
 #### Objetivo da seção
 
@@ -216,7 +216,7 @@ Porque o advogado compra mais rápido quando reconhece um cenário real da sua p
 
 #### Objetivo da seção
 
-Mostrar por que o Jurídia Voice é uma ferramenta séria.
+Mostrar por que o Jurid IA Voice é uma ferramenta séria.
 
 #### O que pode entrar
 
@@ -275,7 +275,7 @@ Encerrar com ação clara e coerente.
 #### Possíveis CTAs
 
 - começar agora
-- testar o Jurídia Voice
+- testar o Jurid IA Voice
 - ver como funciona na prática
 
 #### Regra principal
@@ -284,7 +284,7 @@ A ação precisa parecer lógica, não forçada.
 
 ## 9. Como equilibrar emoção e precisão
 
-O Jurídia Voice deve trabalhar uma emoção específica: **segurança racional**.
+O Jurid IA Voice deve trabalhar uma emoção específica: **segurança racional**.
 
 Ele não precisa soar exuberante. Precisa soar confiável, organizado e útil.
 
@@ -312,9 +312,9 @@ Evitar excesso de:
 - prova visual da estrutura gerada
 - elementos de segurança e confiabilidade
 
-## 12. Tese de conversão da LP do Jurídia Voice
+## 12. Tese de conversão da LP do Jurid IA Voice
 
-> A LP do Jurídia Voice deve transformar curiosidade em confiança prática, mostrando que o produto organiza conversas jurídicas com simplicidade, contexto e utilidade real para a continuidade da atuação.
+> A LP do Jurid IA Voice deve transformar curiosidade em confiança prática, mostrando que o produto organiza conversas jurídicas com simplicidade, contexto e utilidade real para a continuidade da atuação.
 
 ## 13. Instrução final para quem for desenvolver a LP
 

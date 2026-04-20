@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PlayCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Button } from "@/components/ui/Button";
 
 export function VoiceDemoSection() {
   return (
@@ -28,23 +29,30 @@ export function VoiceDemoSection() {
           transition={{ duration: 0.5 }}
           className="relative mx-auto mt-12 aspect-video w-full max-w-5xl overflow-hidden rounded-2xl border border-line bg-bg-card shadow-card"
         >
-          {/* Placeholder do vídeo demo. Substituir por <video> ou <iframe> quando o material estiver pronto. */}
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(201,165,124,0.18),transparent_60%),radial-gradient(circle_at_70%_70%,rgba(176,144,96,0.12),transparent_60%)]"
+          <video
+            className="h-full w-full object-cover"
+            src="/videos/jurid-site.mp4"
+            controls
+            playsInline
+            preload="metadata"
+            aria-label="Demo do Jurid IA Voice em uso"
           />
-          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 p-6 text-center">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-line bg-bg-elev text-gold-light shadow-gold animate-pulse-gold">
-              <PlayCircle size={40} aria-hidden />
-            </div>
-            <p className="font-display text-lg font-semibold text-text">
-              Demo do Jurídia Voice em uso
-            </p>
-            <p className="max-w-md text-sm text-text-muted">
-              Vídeo de 45–70 segundos: gravação real → resultado estruturado aparecendo. Slot reservado;
-              será ligado quando o material for produzido.
-            </p>
-          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-3 text-center"
+        >
+          <Button as="a" href="#cadastro" size="lg">
+            Comece grátis
+            <ArrowRight size={18} aria-hidden />
+          </Button>
+          <p className="text-sm text-text-muted">
+            Crie sua conta em 30 segundos — nome, e-mail e telefone. Depois é só definir a senha.
+          </p>
         </motion.div>
       </Container>
     </Section>

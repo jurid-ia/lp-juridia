@@ -31,7 +31,7 @@ export function VoiceCTASection() {
                 <GoldGradientText>retomar o caso com clareza</GoldGradientText>.
               </h2>
               <p className="mt-4 max-w-lg text-text-muted">
-                Em menos de um minuto você cria sua conta no Jurídia Voice. Depois é só gravar a próxima
+                Em menos de um minuto você cria sua conta no Jurid IA Voice. Depois é só gravar a próxima
                 conversa — o registro estruturado chega pronto.
               </p>
             </motion.div>
