@@ -5,7 +5,7 @@ import { ArrowRight, Cloud, EyeOff, KeyRound, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Button } from "@/components/ui/Button";
+import { CadastroCTA } from "@/components/ui/CadastroCTA";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 
 const PILLARS = [
@@ -72,10 +72,10 @@ export function VoiceTrustSection() {
         </div>
 
         <div className="mt-10 flex flex-col items-center gap-3 text-center">
-          <Button as="a" href="#cadastro" size="lg">
+          <CadastroCTA source="trust" size="lg">
             Começar com segurança
             <ArrowRight size={18} aria-hidden />
-          </Button>
+          </CadastroCTA>
           <p className="text-sm text-text-soft">Conta gratuita. LGPD desde o primeiro atendimento.</p>
         </div>
       </Container>

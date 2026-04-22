@@ -13,7 +13,7 @@ import {
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Button } from "@/components/ui/Button";
+import { CadastroCTA } from "@/components/ui/CadastroCTA";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 
 const FEATURES = [
@@ -92,10 +92,10 @@ export function VoiceFeaturesSection() {
         </div>
 
         <div className="mt-10 flex flex-col items-center gap-3 text-center">
-          <Button as="a" href="#cadastro" size="lg">
+          <CadastroCTA source="features" size="lg">
             Quero ver isso na minha rotina
             <ArrowRight size={18} aria-hidden />
-          </Button>
+          </CadastroCTA>
           <p className="text-sm text-text-soft">Crie sua conta grátis em 30 segundos.</p>
         </div>
       </Container>
