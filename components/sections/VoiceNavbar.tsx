@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { CadastroCTA } from "@/components/ui/CadastroCTA";
 import { cn } from "@/lib/cn";
 
 const NAV_LINKS = [
@@ -71,9 +71,9 @@ export function VoiceNavbar() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button as="a" href="#cadastro" size="sm">
+          <CadastroCTA source="navbar_desktop" size="sm">
             Criar conta
-          </Button>
+          </CadastroCTA>
         </div>
 
         <button
@@ -100,9 +100,14 @@ export function VoiceNavbar() {
                 {link.label}
               </a>
             ))}
-            <Button as="a" href="#cadastro" size="md" className="mt-3 w-full" onClick={() => setOpen(false)}>
+            <CadastroCTA
+              source="navbar_mobile"
+              size="md"
+              className="mt-3 w-full"
+              onClick={() => setOpen(false)}
+            >
               Criar conta
-            </Button>
+            </CadastroCTA>
           </Container>
         </div>
       )}

@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Button } from "@/components/ui/Button";
+import { CadastroCTA } from "@/components/ui/CadastroCTA";
 
 export function VoiceDemoSection() {
   return (
@@ -46,10 +46,10 @@ export function VoiceDemoSection() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-3 text-center"
         >
-          <Button as="a" href="#cadastro" size="lg">
+          <CadastroCTA source="demo" size="lg">
             Comece grátis
             <ArrowRight size={18} aria-hidden />
-          </Button>
+          </CadastroCTA>
           <p className="text-sm text-text-muted">
             Crie sua conta em 30 segundos — nome, e-mail e telefone. Depois é só definir a senha.
           </p>

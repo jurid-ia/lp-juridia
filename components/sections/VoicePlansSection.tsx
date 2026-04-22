@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Button } from "@/components/ui/Button";
+import { CadastroCTA } from "@/components/ui/CadastroCTA";
 import { cn } from "@/lib/cn";
 
 type Plan = {
@@ -107,15 +107,14 @@ export function VoicePlansSection() {
                 ))}
               </ul>
 
-              <Button
-                as="a"
-                href="#cadastro"
+              <CadastroCTA
+                source={`plans_${plan.name.toLowerCase().replace(/\s+/g, "_")}`}
                 variant={plan.highlight ? "primary" : "ghost"}
                 size="md"
                 className="mt-7 w-full"
               >
                 {plan.cta}
-              </Button>
+              </CadastroCTA>
             </motion.div>
           ))}
         </div>

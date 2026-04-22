@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Button } from "@/components/ui/Button";
+import { CadastroCTA } from "@/components/ui/CadastroCTA";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 
 const STEPS = [
@@ -71,10 +71,10 @@ export function VoiceHowItWorksSection() {
         </div>
 
         <div className="mt-10 flex flex-col items-center gap-3 text-center">
-          <Button as="a" href="#cadastro" size="lg">
+          <CadastroCTA source="como_funciona" size="lg">
             Comece grátis
             <ArrowRight size={18} aria-hidden />
-          </Button>
+          </CadastroCTA>
           <p className="text-sm text-text-soft">Sem instalação. Sem cartão. Cria conta em 30 segundos.</p>
         </div>
       </Container>

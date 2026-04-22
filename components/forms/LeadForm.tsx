@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { maskPhone, onlyDigits } from "@/lib/masks";
 import { LeadSchema } from "@/lib/validators";
 import { track } from "@/lib/analytics";
+import { trackEvent } from "@/lib/track-event";
 import { cn } from "@/lib/cn";
 import { useApiContext } from "@/context/ApiContext";
 
@@ -96,6 +97,22 @@ export function LeadForm({
     }
 
     track("lead_submit", { source: payload.source });
+
+    // Meta Pixel + CAPI: dispara Lead só após sucesso no pré-cadastro.
+    // Quebra o nome em primeiro/sobrenome para melhorar EMQ.
+    const [firstName, ...rest] = payload.nome.trim().split(/\s+/);
+    const lastName = rest.join(" ");
+    await trackEvent({
+      eventName: "Lead",
+      email: payload.email,
+      phone: payload.telefone,
+      firstName,
+      lastName: lastName || undefined,
+      value: 50,
+      currency: "BRL",
+      contentName: `jurid_voice_cadastro_${payload.source ?? variant}`,
+      contentCategory: "cadastro_saas_b2b",
+    });
 
     const params = new URLSearchParams({
       nome: payload.nome,

@@ -10,6 +10,8 @@ import { VoiceTrustSection } from "@/components/sections/VoiceTrustSection";
 import { VoiceFAQSection } from "@/components/sections/VoiceFAQSection";
 import { VoiceCTASection } from "@/components/sections/VoiceCTASection";
 import { VoiceFooter } from "@/components/sections/VoiceFooter";
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { MobileBottomNav } from "@/components/ui/MobileBottomNav";
 
 export default function Page() {
   return (
@@ -28,6 +30,8 @@ export default function Page() {
         <VoiceCTASection />
       </main>
       <VoiceFooter />
+      <FloatingWhatsApp />
+      <MobileBottomNav />
     </>
   );
 }

@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Button } from "@/components/ui/Button";
+import { CadastroCTA } from "@/components/ui/CadastroCTA";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 
 const CASES = [
@@ -61,10 +61,10 @@ export function VoiceUseCasesSection() {
             </ol>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button as="a" href="#cadastro" size="md">
+              <CadastroCTA source="use_cases" size="md">
                 Comece grátis
                 <ArrowRight size={16} aria-hidden />
-              </Button>
+              </CadastroCTA>
               <span className="text-sm text-text-soft">
                 Sem cartão. Em 30 segundos você está dentro.
               </span>

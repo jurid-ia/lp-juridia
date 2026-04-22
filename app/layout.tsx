@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Karla } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { MetaPixel } from "@/components/MetaPixel";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={`${inter.variable} ${karla.variable}`}>
       <body>
+        <MetaPixel />
         <Providers>{children}</Providers>
       </body>
     </html>
